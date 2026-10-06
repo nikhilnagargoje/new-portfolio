@@ -1,0 +1,439 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* MAIN APP */
+.app {
+  min-height: 100vh;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  background: #000;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* HERO DARK */
+.hero {
+  padding: 100px 20px;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* TEXT */
+.hero-text h1 {
+  font-size: 52px;
+  margin-bottom: 15px;
+}
+
+.hero-text h1 span {
+  color: #00ffd5;
+  text-shadow: 0 0 15px #00ffd5;
+}
+
+.hero-text p {
+  color: #aaa;
+  margin-bottom: 25px;
+  font-size: 18px;
+}
+
+/* TYPING EFFECT */
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #00ffd5;
+  width: 0;
+  animation: typing 4s steps(40, end) forwards, blink 0.8s infinite;
+}
+
+@keyframes typing {
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* BUTTONS */
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-outline,
+.btn-fill {
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+/* outline */
+.btn-outline {
+  border: 1px solid #00ffd5;
+  background: transparent;
+  color: #00ffd5;
+}
+
+.btn-outline:hover {
+  background: #00ffd5;
+  color: #000;
+  box-shadow: 0 0 15px #00ffd5;
+}
+
+/* fill */
+.btn-fill {
+  background: #00ffd5;
+  border: none;
+  color: #000;
+}
+
+.btn-fill:hover {
+  box-shadow: 0 0 25px #00ffd5;
+}
+
+/* IMAGE */
+.hero-image {
+  position: relative;
+}
+
+.hero-image img {
+  width: 300px;
+  border-radius: 15px;
+  z-index: 2;
+  position: relative;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* GLOW EFFECT */
+.glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #00ffd5, transparent);
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  z-index: 1;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 36px;
+  }
+
+  .hero-image img {
+    width: 220px;
+  }
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.btn.primary {
+  background: #fff;
+  color: #000;
+}
+
+.btn.primary:hover {
+  opacity: 0.8;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.section p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* DARK SECTION */
+.dark {
+  background: #111;
+}
+
+/* CENTER */
+.center {
+  text-align: center;
+}
+
+/* PROJECT GRID */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* CARD */
+.card {
+  border: 1px solid #222;
+  padding: 20px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #fff;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.card-buttons a {
+  padding: 6px 12px;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.card-buttons a:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* SKILLS */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.skills span {
+  border: 1px solid #333;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.skills span:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* EXPERIENCE */
+.experience {
+  border: 1px solid #222;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.experience h3 {
+  margin-bottom: 5px;
+}
+
+.experience p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* CONTACT */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  background: #000;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.contact-form button {
+  padding: 10px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  opacity: 0.8;
+}
+
+/* SOCIAL */
+.socials {
+  margin-top: 15px;
+}
+
+.socials a {
+  margin: 0 10px;
+  color: #ccc;
+  text-decoration: none;
+}
+
+.socials a:hover {
+  color: #fff;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #222;
+  color: #777;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-section h2 {
+    font-size: 32px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+/* SCROLL ANIMATION */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CARD GLOW */
+.card:hover {
+  box-shadow: 0 0 20px #00ffd5;
+}
+
+/* CERTIFICATE BUTTON */
+.cert {
+  border: 1px solid #00ffd5;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #00ffd5;
+  transition: 0.3s;
+}
+
+.cert:hover {
+  background: #00ffd5;
+  color: #000;
+  box-shadow: 0 0 15px #00ffd5;
+}

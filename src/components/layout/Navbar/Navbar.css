@@ -1,0 +1,785 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 82px;
+
+  background: rgba(5, 5, 5, 0.08);
+
+  border-bottom: 1px solid transparent;
+
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+
+  transition:
+    background 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.navbar--scrolled {
+  background: rgba(5, 5, 5, 0.72);
+
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(22px) saturate(130%);
+  -webkit-backdrop-filter: blur(22px) saturate(130%);
+
+  box-shadow:
+    0 12px 45px rgba(0, 0, 0, 0.2),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.navbar--menu-open {
+  background: rgba(5, 5, 5, 0.92);
+
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+.navbar__inner {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto;
+
+  align-items: center;
+
+  gap: 35px;
+
+  width: min(1440px, calc(100% - 70px));
+
+  height: 100%;
+
+  margin: 0 auto;
+}
+
+/* =================================
+   BRAND
+================================= */
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  width: max-content;
+
+  color: #ffffff;
+}
+
+.navbar__brand-mark {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 39px;
+  height: 39px;
+
+  border: 1px solid rgba(255, 255, 255, 0.17);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.09),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  font-size: 18px;
+  font-weight: 800;
+
+  letter-spacing: -0.08em;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.navbar__brand:hover .navbar__brand-mark {
+  transform: translateY(-2px) rotate(-3deg);
+
+  border-color: rgba(167, 148, 255, 0.55);
+
+  background: rgba(124, 92, 255, 0.12);
+
+  box-shadow: 0 0 30px rgba(124, 92, 255, 0.12);
+}
+
+.navbar__brand-line {
+  width: 28px;
+  height: 1px;
+
+  background: linear-gradient(90deg, rgba(167, 148, 255, 0.8), transparent);
+}
+
+/* =================================
+   DESKTOP NAV
+================================= */
+
+.navbar__nav {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: clamp(13px, 1.4vw, 25px);
+
+  min-width: 0;
+}
+
+.navbar__link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 10px 0;
+
+  color: rgba(255, 255, 255, 0.47);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: 0.1em;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navbar__link::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 3px;
+  left: 0;
+
+  height: 1px;
+
+  transform: scaleX(0);
+
+  transform-origin: right;
+
+  background: #a794ff;
+
+  box-shadow: 0 0 10px rgba(167, 148, 255, 0.6);
+
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.navbar__link-number {
+  font-size: 7px;
+
+  color: rgba(255, 255, 255, 0.18);
+
+  transition: color 0.3s ease;
+}
+
+.navbar__link-arrow {
+  margin-left: 1px;
+
+  color: rgba(255, 255, 255, 0.16);
+
+  font-size: 10px;
+
+  transform: translateY(-1px);
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navbar__link:hover {
+  color: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+.navbar__link:hover::after {
+  transform: scaleX(1);
+
+  transform-origin: left;
+}
+
+.navbar__link:hover .navbar__link-number {
+  color: #a794ff;
+}
+
+.navbar__link:hover .navbar__link-arrow {
+  color: #a794ff;
+
+  transform: translate(2px, -3px);
+}
+
+/* =================================
+   CTA
+================================= */
+
+.navbar__cta {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  min-width: 140px;
+  height: 48px;
+
+  padding: 0 17px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.055),
+    rgba(255, 255, 255, 0.01)
+  );
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.13em;
+
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.navbar__cta::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  transform: translateX(-105%);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(167, 148, 255, 0.13),
+    transparent
+  );
+
+  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.navbar__cta span,
+.navbar__cta b {
+  position: relative;
+  z-index: 1;
+}
+
+.navbar__cta b {
+  color: #a794ff;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  transition: transform 0.3s ease;
+}
+
+.navbar__cta:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(167, 148, 255, 0.4);
+
+  background: rgba(124, 92, 255, 0.08);
+
+  color: #ffffff;
+}
+
+.navbar__cta:hover::before {
+  transform: translateX(105%);
+}
+
+.navbar__cta:hover b {
+  transform: translate(3px, -3px);
+}
+
+/* =================================
+   SCROLL PROGRESS
+================================= */
+
+.navbar__progress {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 1px;
+
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  pointer-events: none;
+}
+
+.navbar__progress span {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  transform-origin: left center;
+
+  background: linear-gradient(
+    90deg,
+    rgba(124, 92, 255, 0.2),
+    #a794ff,
+    rgba(0, 210, 255, 0.75)
+  );
+
+  box-shadow: 0 0 12px rgba(167, 148, 255, 0.5);
+}
+
+/* =================================
+   MOBILE MENU BUTTON
+================================= */
+
+.navbar__menu-button {
+  display: none;
+
+  position: relative;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #ffffff;
+}
+
+.navbar__menu-button span {
+  display: block;
+
+  width: 17px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.25s ease;
+}
+
+.navbar__menu-button--active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.navbar__menu-button--active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__menu-button--active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* =================================
+   MOBILE MENU
+================================= */
+
+.navbar__mobile-menu {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999;
+
+  display: block;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  background:
+    radial-gradient(
+      circle at 75% 20%,
+      rgba(124, 92, 255, 0.11),
+      transparent 30%
+    ),
+    rgba(5, 5, 5, 0.97);
+
+  overscroll-behavior: contain;
+
+  touch-action: pan-y;
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+}
+
+.navbar__mobile-menu--open {
+  visibility: visible;
+
+  pointer-events: auto;
+
+  opacity: 1;
+}
+
+.navbar__mobile-menu-inner {
+  width: min(100% - 30px, 560px);
+
+  height: 100dvh;
+
+  max-height: 100dvh;
+
+  margin: 0 auto;
+
+  padding: 110px 0 25px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  overscroll-behavior-y: contain;
+
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: pan-y;
+
+  scrollbar-width: thin;
+
+  scrollbar-color: rgba(167, 148, 255, 0.35) transparent;
+}
+
+/*
+  Custom mobile menu scrollbar
+*/
+
+.navbar__mobile-menu-inner::-webkit-scrollbar {
+  width: 3px;
+}
+
+.navbar__mobile-menu-inner::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.navbar__mobile-menu-inner::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+
+  background: rgba(167, 148, 255, 0.35);
+}
+
+.navbar__mobile-menu-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.16em;
+
+  color: rgba(255, 255, 255, 0.32);
+}
+
+.navbar__mobile-nav {
+  display: flex;
+
+  flex-direction: column;
+
+  min-height: max-content;
+}
+
+.navbar__mobile-nav a {
+  display: grid;
+
+  grid-template-columns:
+    35px
+    minmax(0, 1fr)
+    25px;
+
+  align-items: center;
+
+  min-height: 65px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: rgba(255, 255, 255, 0.48);
+
+  transition:
+    color 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+.navbar__mobile-nav a span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar__mobile-nav a strong {
+  font-size: 18px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.025em;
+}
+
+.navbar__mobile-nav a b {
+  justify-self: end;
+
+  color: rgba(255, 255, 255, 0.18);
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.navbar__mobile-nav a:hover {
+  padding-left: 7px;
+
+  color: #ffffff;
+}
+
+.navbar__mobile-nav a:hover span,
+.navbar__mobile-nav a:hover b {
+  color: #a794ff;
+}
+
+.navbar__mobile-nav a:hover b {
+  transform: translate(3px, -3px);
+}
+
+.navbar__mobile-footer {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  padding-top: 28px;
+
+  padding-bottom: 25px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  line-height: 1.7;
+
+  letter-spacing: 0.1em;
+
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar__mobile-footer span:nth-child(2) {
+  color: #a794ff;
+}
+
+/* =================================
+   BODY / HTML LOCK
+================================= */
+
+/*
+  Prevent the actual portfolio page
+  from scrolling while mobile menu
+  is open.
+*/
+
+html.nav-html-lock {
+  overflow: hidden;
+
+  height: 100%;
+
+  overscroll-behavior: none;
+}
+
+body.nav-menu-open {
+  position: fixed;
+
+  width: 100%;
+
+  left: 0;
+  right: 0;
+
+  overflow: hidden;
+
+  touch-action: none;
+
+  overscroll-behavior: none;
+}
+
+/*
+  Important:
+  The menu itself remains scrollable.
+*/
+
+body.nav-menu-open .navbar__mobile-menu-inner {
+  touch-action: pan-y;
+}
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 1180px) {
+  .navbar__inner {
+    width: min(100% - 45px, 1440px);
+
+    gap: 22px;
+  }
+
+  .navbar__nav {
+    gap: 12px;
+  }
+
+  .navbar__link {
+    font-size: 8px;
+  }
+
+  .navbar__link-number {
+    display: none;
+  }
+
+  .navbar__cta {
+    min-width: 125px;
+  }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 900px) {
+  .navbar {
+    height: 72px;
+  }
+
+  .navbar__inner {
+    display: flex;
+
+    justify-content: space-between;
+
+    width: calc(100% - 30px);
+  }
+
+  .navbar__nav,
+  .navbar__cta {
+    display: none;
+  }
+
+  .navbar__menu-button {
+    display: flex;
+  }
+
+  .navbar__brand-mark {
+    width: 37px;
+    height: 37px;
+  }
+
+  .navbar__brand-line {
+    width: 22px;
+  }
+
+  .navbar__mobile-menu-inner {
+    padding-top: 98px;
+  }
+}
+
+/* =================================
+   SMALL MOBILE
+================================= */
+
+@media (max-width: 420px) {
+  .navbar__inner {
+    width: calc(100% - 22px);
+  }
+
+  .navbar__mobile-menu-inner {
+    width: calc(100% - 24px);
+
+    padding-top: 96px;
+  }
+
+  .navbar__mobile-nav a {
+    min-height: 60px;
+  }
+
+  .navbar__mobile-nav a strong {
+    font-size: 16px;
+  }
+
+  .navbar__mobile-footer {
+    padding-bottom: 30px;
+  }
+}
+
+/* =================================
+   REDUCED MOTION
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar__brand-mark,
+  .navbar__link,
+  .navbar__link::after,
+  .navbar__link-arrow,
+  .navbar__cta,
+  .navbar__cta::before,
+  .navbar__cta b,
+  .navbar__menu-button span,
+  .navbar__mobile-menu,
+  .navbar__mobile-nav a,
+  .navbar__mobile-nav a b {
+    transition: none;
+  }
+}
